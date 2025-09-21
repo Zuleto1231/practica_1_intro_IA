@@ -1,0 +1,416 @@
+@prefix base: <http://ejemplo.org/inventario#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema1: <http://schema.org/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+base:Categoria a rdfs:Class,
+        rdfs:Resource ;
+    rdfs:subClassOf base:Categoria,
+        rdfs:Resource .
+
+base:Critico a base:Categoria,
+        rdfs:Class,
+        rdfs:Resource ;
+    rdfs:subClassOf base:Categoria,
+        base:Critico,
+        rdfs:Resource .
+
+base:Demanda a rdfs:Class,
+        rdfs:Resource ;
+    rdfs:subClassOf base:Demanda,
+        rdfs:Resource .
+
+base:NoPerecedero a base:Categoria,
+        rdfs:Class,
+        rdfs:Resource ;
+    rdfs:subClassOf base:Categoria,
+        base:NoPerecedero,
+        rdfs:Resource .
+
+base:Pedido a rdfs:Class,
+        rdfs:Resource ;
+    rdfs:subClassOf base:Pedido,
+        rdfs:Resource .
+
+base:PedidoUrgente a rdfs:Class,
+        rdfs:Resource ;
+    rdfs:subClassOf base:Pedido,
+        base:PedidoUrgente,
+        rdfs:Resource .
+
+base:Perecedero a base:Categoria,
+        rdfs:Class,
+        rdfs:Resource ;
+    rdfs:subClassOf base:Categoria,
+        base:Perecedero,
+        rdfs:Resource .
+
+base:Producto a rdfs:Class,
+        rdfs:Resource ;
+    rdfs:subClassOf base:Producto,
+        rdfs:Resource .
+
+base:Promocion a rdfs:Class,
+        rdfs:Resource ;
+    rdfs:subClassOf base:Promocion,
+        rdfs:Resource .
+
+base:Proveedor a rdfs:Class,
+        rdfs:Resource ;
+    rdfs:subClassOf base:Proveedor,
+        rdfs:Resource .
+
+base:ProveedorPreferido a rdfs:Class,
+        rdfs:Resource ;
+    rdfs:subClassOf base:Proveedor,
+        base:ProveedorPreferido,
+        rdfs:Resource .
+
+base:StockSnapshot a rdfs:Class,
+        rdfs:Resource ;
+    rdfs:subClassOf base:StockSnapshot,
+        rdfs:Resource .
+
+base:Aceite a base:Producto,
+        rdfs:Resource ;
+    base:nombre "Aceite" ;
+    base:perteneceACategoria base:NoPerecedero ;
+    base:tieneDemanda base:Demanda_Aceite ;
+    base:tieneProveedor base:ProveedorZ ;
+    base:tieneStock 12 ;
+    foaf:name "Aceite" .
+
+base:Azucar a base:Producto,
+        rdfs:Resource ;
+    base:nombre "Azucar" ;
+    base:perteneceACategoria base:NoPerecedero ;
+    base:tieneDemanda base:Demanda_Azucar ;
+    base:tieneProveedor base:ProveedorSecundario ;
+    base:tieneStock 3 ;
+    foaf:name "Azucar" .
+
+base:Pedido_1 a base:Pedido,
+        rdfs:Resource ;
+    base:cantidadPedida 10 ;
+    schema1:itemOffered base:Leche .
+
+base:Pedido_2 a base:Pedido,
+        rdfs:Resource ;
+    base:cantidadPedida 5 ;
+    schema1:itemOffered base:Arroz .
+
+base:Pedido_3 a base:Pedido,
+        rdfs:Resource ;
+    base:cantidadPedida 8 ;
+    schema1:itemOffered base:Pan .
+
+base:Pedido_4 a base:Pedido,
+        rdfs:Resource ;
+    base:cantidadPedida 12 ;
+    schema1:itemOffered base:Medicamentos .
+
+base:Pedido_5 a base:Pedido,
+        rdfs:Resource ;
+    base:cantidadPedida 20 ;
+    schema1:itemOffered base:Huevos .
+
+base:Sal a base:Producto,
+        rdfs:Resource ;
+    base:nombre "Sal" ;
+    base:perteneceACategoria base:NoPerecedero ;
+    base:tieneDemanda base:Demanda_Sal ;
+    base:tieneProveedor base:ProveedorY ;
+    base:tieneStock 55 ;
+    foaf:name "Sal" .
+
+base:Arroz a base:Producto,
+        rdfs:Resource ;
+    base:nombre "Arroz" ;
+    base:perteneceACategoria base:NoPerecedero ;
+    base:tieneDemanda base:Demanda_Arroz ;
+    base:tieneProveedor base:ProveedorY ;
+    base:tieneStock 60 ;
+    foaf:name "Arroz" .
+
+base:Demanda_Aceite a base:Demanda,
+        rdfs:Resource ;
+    base:nivelDemanda "Media" .
+
+base:Demanda_Arroz a base:Demanda,
+        rdfs:Resource ;
+    base:nivelDemanda "Baja" .
+
+base:Demanda_Azucar a base:Demanda,
+        rdfs:Resource ;
+    base:nivelDemanda "Media" .
+
+base:Demanda_Huevos a base:Demanda,
+        rdfs:Resource ;
+    base:nivelDemanda "Alta" .
+
+base:Demanda_Leche a base:Demanda,
+        rdfs:Resource ;
+    base:nivelDemanda "Alta" .
+
+base:Demanda_Medicamentos a base:Demanda,
+        rdfs:Resource ;
+    base:nivelDemanda "Alta" .
+
+base:Demanda_Pan a base:Demanda,
+        rdfs:Resource ;
+    base:nivelDemanda "Alta" .
+
+base:Demanda_Sal a base:Demanda,
+        rdfs:Resource ;
+    base:nivelDemanda "Baja" .
+
+base:Huevos a base:Producto,
+        rdfs:Resource ;
+    base:nombre "Huevos" ;
+    base:perteneceACategoria base:Perecedero ;
+    base:tieneDemanda base:Demanda_Huevos ;
+    base:tieneProveedor base:ProveedorX ;
+    base:tieneStock 8 ;
+    foaf:name "Huevos" .
+
+base:Leche a base:Producto,
+        rdfs:Resource ;
+    base:nombre "Leche" ;
+    base:perteneceACategoria base:Perecedero ;
+    base:tieneDemanda base:Demanda_Leche ;
+    base:tieneProveedor base:ProveedorX ;
+    base:tieneStock 4 ;
+    foaf:name "Leche" .
+
+base:Medicamentos a base:Producto,
+        rdfs:Resource ;
+    base:nombre "Medicamentos" ;
+    base:perteneceACategoria base:Critico ;
+    base:proveedorPrincipal base:ProveedorPrincipal ;
+    base:tieneDemanda base:Demanda_Medicamentos ;
+    base:tieneProveedor base:ProveedorPrincipal ;
+    base:tieneStock 5 ;
+    foaf:name "Medicamentos" .
+
+base:Pan a base:Producto,
+        rdfs:Resource ;
+    base:nombre "Pan" ;
+    base:perteneceACategoria base:Perecedero ;
+    base:tieneDemanda base:Demanda_Pan ;
+    base:tieneProveedor base:ProveedorX ;
+    base:tieneStock 0 ;
+    foaf:name "Pan" .
+
+base:ProveedorSecundario a base:Proveedor,
+        rdfs:Resource ;
+    base:calidad 7 ;
+    base:leadTimeDias 9 ;
+    foaf:name "ProveedorSecundario" .
+
+base:ProveedorZ a base:Proveedor,
+        rdfs:Resource ;
+    base:calidad 8 ;
+    base:leadTimeDias 10 ;
+    foaf:name "ProveedorZ" .
+
+base:calidad a rdf:Property,
+        rdfs:Resource ;
+    rdfs:domain base:Proveedor ;
+    rdfs:range xsd:integer ;
+    rdfs:subPropertyOf base:calidad .
+
+base:cantidadPedida a rdf:Property,
+        rdfs:Resource ;
+    rdfs:domain base:Pedido ;
+    rdfs:range xsd:integer ;
+    rdfs:subPropertyOf base:cantidadPedida .
+
+base:confiabilidadFinal a rdf:Property,
+        rdfs:Resource ;
+    rdfs:domain base:Proveedor ;
+    rdfs:range xsd:float ;
+    rdfs:subPropertyOf base:confiabilidadFinal .
+
+base:leadTimeDias a rdf:Property,
+        rdfs:Resource ;
+    rdfs:domain base:Proveedor ;
+    rdfs:range xsd:integer ;
+    rdfs:subPropertyOf base:leadTimeDias .
+
+base:nivelDemanda a rdf:Property,
+        rdfs:Resource ;
+    rdfs:domain base:Demanda ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf base:nivelDemanda .
+
+base:nombre a rdf:Property,
+        rdfs:Resource ;
+    rdfs:domain base:Producto ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf base:nombre .
+
+base:perteneceACategoria a rdf:Property,
+        rdfs:Resource ;
+    rdfs:domain base:Producto ;
+    rdfs:range base:Categoria ;
+    rdfs:subPropertyOf base:perteneceACategoria .
+
+base:proveedorPrincipal a rdf:Property,
+        rdfs:Resource ;
+    rdfs:domain base:Producto ;
+    rdfs:range base:ProveedorPreferido ;
+    rdfs:subPropertyOf base:proveedorPrincipal,
+        base:tieneProveedor .
+
+base:tieneDemanda a rdf:Property,
+        rdfs:Resource ;
+    rdfs:domain base:Producto ;
+    rdfs:range base:Demanda ;
+    rdfs:subPropertyOf base:tieneDemanda .
+
+base:tieneStock a rdf:Property,
+        rdfs:Resource ;
+    rdfs:domain base:Producto ;
+    rdfs:range xsd:integer ;
+    rdfs:subPropertyOf base:tieneStock .
+
+schema1:itemOffered a rdf:Property ;
+    rdfs:subPropertyOf schema1:itemOffered .
+
+rdf:type a rdf:Property ;
+    rdfs:subPropertyOf rdf:type .
+
+rdfs:domain a rdf:Property ;
+    rdfs:subPropertyOf rdfs:domain .
+
+rdfs:range a rdf:Property ;
+    rdfs:subPropertyOf rdfs:range .
+
+rdfs:subClassOf a rdf:Property ;
+    rdfs:subPropertyOf rdfs:subClassOf .
+
+rdfs:subPropertyOf a rdf:Property ;
+    rdfs:subPropertyOf rdfs:subPropertyOf .
+
+xsd:float a rdfs:Resource .
+
+foaf:name a rdf:Property ;
+    rdfs:subPropertyOf foaf:name .
+
+0 a rdfs:Resource,
+        xsd:integer .
+
+4 a rdfs:Resource,
+        xsd:integer .
+
+6 a rdfs:Resource,
+        xsd:integer .
+
+20 a rdfs:Resource,
+        xsd:integer .
+
+55 a rdfs:Resource,
+        xsd:integer .
+
+60 a rdfs:Resource,
+        xsd:integer .
+
+"ProveedorPrincipal" a rdfs:Resource .
+
+"ProveedorSecundario" a rdfs:Resource .
+
+"ProveedorX" a rdfs:Resource .
+
+"ProveedorY" a rdfs:Resource .
+
+"ProveedorZ" a rdfs:Resource .
+
+base:ProveedorPrincipal a base:Proveedor,
+        base:ProveedorPreferido,
+        rdfs:Resource ;
+    base:calidad 9 ;
+    base:leadTimeDias 3 ;
+    foaf:name "ProveedorPrincipal" .
+
+base:ProveedorY a base:Proveedor,
+        rdfs:Resource ;
+    base:calidad 7 ;
+    base:leadTimeDias 5 ;
+    foaf:name "ProveedorY" .
+
+base:tieneProveedor a rdf:Property,
+        rdfs:Resource ;
+    rdfs:domain base:Producto ;
+    rdfs:range base:Proveedor ;
+    rdfs:subPropertyOf base:tieneProveedor .
+
+3 a rdfs:Resource,
+        xsd:integer .
+
+9 a rdfs:Resource,
+        xsd:integer .
+
+10 a rdfs:Resource,
+        xsd:integer .
+
+12 a rdfs:Resource,
+        xsd:integer .
+
+"Aceite" a rdfs:Resource,
+        xsd:string .
+
+"Arroz" a rdfs:Resource,
+        xsd:string .
+
+"Azucar" a rdfs:Resource,
+        xsd:string .
+
+"Baja" a rdfs:Resource,
+        xsd:string .
+
+"Huevos" a rdfs:Resource,
+        xsd:string .
+
+"Leche" a rdfs:Resource,
+        xsd:string .
+
+"Media" a rdfs:Resource,
+        xsd:string .
+
+"Medicamentos" a rdfs:Resource,
+        xsd:string .
+
+"Pan" a rdfs:Resource,
+        xsd:string .
+
+"Sal" a rdfs:Resource,
+        xsd:string .
+
+base:ProveedorX a base:Proveedor,
+        rdfs:Resource ;
+    base:calidad 6 ;
+    base:leadTimeDias 7 ;
+    foaf:name "ProveedorX" .
+
+5 a rdfs:Resource,
+        xsd:integer .
+
+7 a rdfs:Resource,
+        xsd:integer .
+
+8 a rdfs:Resource,
+        xsd:integer .
+
+"Alta" a rdfs:Resource,
+        xsd:string .
+
+rdfs:Class a rdfs:Resource .
+
+xsd:string a rdfs:Resource .
+
+xsd:integer a rdfs:Resource .
+
+rdf:Property a rdfs:Resource .
+
