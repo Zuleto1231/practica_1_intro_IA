@@ -2,6 +2,7 @@
 from rdflib import RDF, RDFS, Literal, XSD
 from rdflib.namespace import FOAF
 from ontologia import BASE
+from ontologia import SCHEMA
 
 from prueba.sistemaInventario import (Producto, Stock, Demanda, Proveedor, Pedido, Categoria, ConfiabilidadProveedor)
 
@@ -44,7 +45,6 @@ def graph_to_facts(g, engine, confi_map=None):
             engine.declare(Proveedor(producto=nombre, nombre=pname))
 
     # Pedidos (usar schema:itemOffered para enlazar producto)
-    from ontologia import SCHEMA
     for pe in g.subjects(RDF.type, BASE.Pedido):
         prod = g.value(pe, SCHEMA.itemOffered)
         cant = g.value(pe, BASE.cantidadPedida)
