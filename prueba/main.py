@@ -1,4 +1,4 @@
-# main.py (o celda principal en Colab)
+# main.py 
 from ontologia import build_ontology, reason_and_compare, serialize_turtle
 from prueba.sistemaDifuso import build_fuzzy_system, eval_confiabilidad
 from prueba.sistemaInventario import InventarioExpertSystem
